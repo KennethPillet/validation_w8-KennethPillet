@@ -14,16 +14,16 @@ class Archer extends Character
     public function turn($target) {
         $rand = rand(1, 10);
         if ($this->arrows == 0) {
-            $status = $this->dagger($target)." Flèches: $this->arrows";
+            $status = $this->dagger($target);
 
         } else if ($rand > 8 && !$this->weakPoint && !$this->twoArrows) {
-            $status = $this->weakpoint($target)." Flèches: $this->arrows";
+            $status = $this->weakpoint($target);
 
         } else if ($this->arrows >=2 && ($rand <= 8 && $rand > 6) && !$this->twoArrows && !$this->weakPoint){
-            $status = $this->twoArrows($target)." Flèches: $this->arrows";
+            $status = $this->twoArrows($target);
 
         } else {
-            $status = $this->attack($target)." Flèches: $this->arrows";
+            $status = $this->attack($target);
         }
         return $status ;
     }
@@ -34,20 +34,20 @@ class Archer extends Character
             $weakPointDamage = $this->damage * $rand;
             $target->setHealthPoints($weakPointDamage);
             $this->arrows -= 1;
-            $status = "$this->name tir en plein dans le mille de $target->name ! Il reste $target->healthPoints points de vie à $target->name !";
+            $status = "$this->name tir en plein dans le mille de $target->name à qui il reste $target->healthPoints points de vie ! Il reste $this->arrows flèches à $this->name !";
             $this->weakPoint = false;
 
         } else if ($this->twoArrows){
             $twoArrowsDamage = $this->damage * 2;
             $target->setHealthPoints($twoArrowsDamage);
             $this->arrows -= 2;
-            $status = "$this->name tir deux fléches sur $target->name ! Il reste $target->healthPoints points de vie à $target->name !";
+            $status = "$this->name tir deux fléches sur $target->name à qui il reste $target->healthPoints points de vie ! Il reste $this->arrows flèches à $this->name !";
             $this->twoArrows = false;
 
         }  else {
             $target->setHealthPoints($this->damage);
             $this->arrows -= 1;
-            $status = "$this->name tir une fléche sur $target->name ! Il reste $target->healthPoints points de vie à $target->name !";
+            $status = "$this->name tir une fléche sur $target->name à qui il reste $target->healthPoints points de vie ! Il reste $this->arrows flèches à $this->name !";
             
         }
         
