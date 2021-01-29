@@ -7,7 +7,7 @@ class Archer extends Character
 
     public function __construct($name) {
         parent::__construct($name);
-        $this->damage = 10;
+        $this->damage = 12;
         $this->arrows = 5;
     }
 

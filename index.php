@@ -18,12 +18,12 @@ $player3 = new Archer('Barret');
     <title>Baston</title>
 </head>
 <body>
-    <?php while ($player1->isAlive() && $player3->isAlive()): ?>
+    <?php while ($player2->isAlive() && $player3->isAlive()): ?>
         <div>
-            <p><?= $player1->turn($player3) ?></p>
-            <?php $result = "$player1->name a gagné !" ?>
+            <p><?= $player2->turn($player3) ?></p>
+            <?php $result = "$player2->name a gagné !" ?>
             <?php if ($player3->isAlive()): ?>
-                <p><?= $player3->turn($player1)?></p>
+                <p><?= $player3->turn($player2)?></p>
                 <?php $result = "$player3->name a gagné !" ?>
             <?php endif ?>
         </div>
